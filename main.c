@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include <string.h>
 #include "img.h"
 
-int leitorPastas(void){
+
+int leitorPastas(char*pasta){
     DIR *dp;
   struct dirent *ep;
 
-  dp = opendir ("../base/img/cantina/");
+  dp = opendir (pasta);
   if (dp != NULL)
     {
       while (ep = readdir (dp))
@@ -22,5 +24,8 @@ int leitorPastas(void){
 
 
 int main (void){
-    leitorPastas();
+    
+    char localidades[] ="../base/img/";
+    
+    leitorPastas(localidades);
 }
