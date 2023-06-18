@@ -57,8 +57,9 @@ void extratorLocalidade(char *localidade) {
   lista_histExtractor(lista, localidade);
 }
 
-int main(void) {
-
+//funcao que extrai os histogramas das localidades
+void recarregarHistogramas(){
+  
   // vetor com as localidades do ifes
   char *localidade[20] = {
     "./base/img/bibliotecaEntrada/",
@@ -83,11 +84,54 @@ int main(void) {
     "./base/img/salaDeAulaSuperior/",
   };
 
-  extratorLocalidade(localidade[5]);
+  for (int i = 19; i < 20; i++) {
+    
+    printf("Extraindo da localidade (%d/20)\n", i+1);
+    extratorLocalidade(localidade[i]);
 
-  // for (int i = 0; i < 20; i++) {
-  //   extratorLocalidade(localidade[i]);
-  // }
+  }
+
+}
+
+
+int main(void) {
+    
+    
+  //menu de selecao do programa
+  int escolha = -1;
+
+  while(escolha != 0) {
+    printf("Digite o numero do que deseja fazer:\n");
+    printf("[1] Recarregar histogramas\n");
+    printf("[2] Consultar localidade\n");
+    printf("[0] SAIR\n\n");
+
+    scanf("%d", &escolha);
+  
+    //opcao numero 1
+    if(escolha == 1){
+      
+      int confirma = -1;
+      
+      printf("Deseja prosseguir com a recarga das localidades? Esse processo pode demorar um pouco.\n");
+      printf("[1] Prosseguir\n");
+      printf("[0] Voltar\n");
+
+      scanf("%d", &confirma);
+
+      if(confirma == 1){
+        printf("executa a recarga dos histogramas\n");
+        //recarregarHistogramas();
+      }
+      
+    }
+    //opcao numero 2
+    else if (escolha == 2){
+      printf("funcao que compara a localidade com a lista de histogramas medios");
+    }
+  
+  }
+
 
   // lista de histogramas medios
 
@@ -95,8 +139,7 @@ int main(void) {
 
   // retorna as cinco localidades mais provaveis
 
-  printf("fim do processo\n");
+  printf("fim do programa\n");
 
   return 0;
 }
-
