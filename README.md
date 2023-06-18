@@ -1,10 +1,35 @@
 # T2ED
-Repositório do Trabalho2 da disciplina de Estrutura de dados (IFES)
 
-Desenvolver este arquivo posteriormente:
+##Autores:
 
--tutorial de como acessar a base de imagens e como utiliza-la no programa
--overview da estrutura das pastas
--descrição das funcoes do programa e seu funcionamento
+Bruno Schneider Plazzi
+Filipe Moura
+Natan Lagassa
+João Marcos Pimentel
 
-!!!atualmente as imagens não estao aqui. vou colocar no drive depois pra vcs usarem e testarem
+##Descrição:
+
+Este é o repositório referente ao trabalho 2, da disciplina de Estrutura de dados do IFES.
+
+##Informações importantes:
+
+Base de fotos: A base de fotos se encontra no link disponibilizado a baixo no google drive. para executar o programa corretamente
+baixe a pasta "base" e coloque no mesmo diretório do arquivo "main.c"
+
+link para a pasta base: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Sobre a execuçao: Para que o programe de maneira correta o executável (main.exe) deve estar no mesmo diretório dos arquivos .c e .h
+
+
+##Sobre os TADs img.h, lista.h e listaHist.h
+
+desenvolver aqui sobre as tipos abstratos que utilizamos e suas funções
+
+##Funcionamento do programa
+
+descrever o que o programa faz passo a passo.
+
+
+
+
+melhorar isso aqui................
