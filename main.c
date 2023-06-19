@@ -83,7 +83,7 @@ void recarregarHistogramas(){
     "./base/img/salaDeAulaSuperior/",
   };
 
-  for (int i = 19; i < 20; i++) {
+  for (int i = 0; i < 20; i++) {
     
     printf("Extraindo da localidade (%d/20)\n", i+1);
     extratorLocalidade(localidade[i]);
@@ -94,11 +94,8 @@ void recarregarHistogramas(){
 
 
 int main(void) {
-    
-    
-  extratorLocalidade("./base/img/cantina/");
   
-  
+  //recarregarHistogramas();
   
   
   

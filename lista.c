@@ -61,6 +61,22 @@ int lista_size(Lista *l) {
   return cont;
 }
 
+void liberarMemoria(Lista *l){
+
+  ListaNode *p = l->first;
+
+  while(p != NULL){
+    ListaNode *t = p->next;
+    liberaMemoria(p->img); //liberar a memoria da mat dentro do IMG
+    free(p->img);          //libera a propria img
+    free(p);               //libera o node
+    p = t;
+  }
+  free(l);                 //libera a lista
+
+}
+
+
 void lista_histExtractor(Lista *l, char *salvarComo) {
 
   int i;
@@ -102,11 +118,7 @@ void lista_histExtractor(Lista *l, char *salvarComo) {
 
   fclose(histogram);
 
-  //liberar memorias aqui
-
-    //libera a memoria das mats de cada foto
-    //libera os nos da lista
-    //libera a lista
-
+  //liberar a memoria utilizada na geracao do histograma medio
+  liberarMemoria(l);
 
 }
