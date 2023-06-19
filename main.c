@@ -95,7 +95,7 @@ void recarregarHistogramas(){
 
 int main(void) {
   
-  //recarregarHistogramas();
+  //MENU ABAIXO
   
   
   
