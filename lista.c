@@ -64,10 +64,10 @@ int lista_size(Lista *l) {
 void lista_histExtractor(Lista *l, char *salvarComo) {
 
   int i;
-  int divisor = lista_size(l); // 5
+  int divisor = lista_size(l);
 
   // histograma medio zerado
-  unsigned char histMedio[256];
+  unsigned int histMedio[256];
   for (i = 0; i < 256; i++) {
     histMedio[i] = 0;
   }
@@ -101,6 +101,12 @@ void lista_histExtractor(Lista *l, char *salvarComo) {
   }
 
   fclose(histogram);
-}
 
-//"./base/img/cantina/"
+  //liberar memorias aqui
+
+    //libera a memoria das mats de cada foto
+    //libera os nos da lista
+    //libera a lista
+
+
+}

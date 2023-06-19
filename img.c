@@ -33,7 +33,7 @@ IMG *lerArquivo(char *dict) {
 
   fclose(in);
 
-  unsigned char k;
+  unsigned int k;
 
   // valores do vetor igual a zero
   for (i = 0; i < foto->brilhoMax+1; i++) {
@@ -52,11 +52,11 @@ IMG *lerArquivo(char *dict) {
 }
 
 // libera a memória alocada para as matrizes
-void liberaMemoria(IMG foto) {
+void liberaMemoria(IMG *foto) {
 
   int i;
-  for (i = 0; i < foto.altura; i++) {
-    free(foto.mat[i]);
+  for (i = 0; i < foto->altura; i++) {
+    free(foto->mat[i]);
   }
-  free(foto.mat);
+  free(foto->mat);
 }

@@ -53,7 +53,6 @@ void extratorLocalidade(char *localidade) {
   leitorPastas(localidade, preencheLista, lista, localidade);
 
   // extrair histograma medio para o txt
-
   lista_histExtractor(lista, localidade);
 }
 
@@ -97,6 +96,15 @@ void recarregarHistogramas(){
 int main(void) {
     
     
+  extratorLocalidade("./base/img/cantina/");
+  
+  
+  
+  
+  
+  /*
+  
+  
   //menu de selecao do programa
   int escolha = -1;
 
@@ -138,6 +146,8 @@ int main(void) {
   // compara query com cada no da lista
 
   // retorna as cinco localidades mais provaveis
+
+  */
 
   printf("fim do programa\n");
 
