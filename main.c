@@ -8,6 +8,7 @@
 
 typedef void (*FileCallback)(const char *, Lista *, char *);
 
+//percorre a pasta selecionada chamando a funcao callback (preencheLista), que preenche a lista de imagens da localidade
 void leitorPastas(char *pasta, FileCallback callback, Lista *l, char *localidade) {
   DIR *dp;
   struct dirent *ep;
@@ -25,13 +26,8 @@ void leitorPastas(char *pasta, FileCallback callback, Lista *l, char *localidade
   }
 }
 
-void printFileName(const char *name) {
 
-  if (*name != '.') {
-    printf("%s\n", name);
-  }
-}
-
+//le o nome do diretorio da imagem, extrai seu struct IMG, adiciona a lista de imagens da localidade
 void preencheLista(const char *name, Lista *l, char *local) {
   if (*name != '.') {
     char dict[81];
@@ -45,6 +41,7 @@ void preencheLista(const char *name, Lista *l, char *local) {
   }
 }
 
+//gera o histograma medio da localidade
 void extratorLocalidade(char *localidade) {
 
   // lista vazia criada
@@ -92,14 +89,35 @@ void recarregarHistogramas(){
 
 }
 
+Lista * listarHistogramasMedios(){
+  //criar uma lista de structs histogramicos
+  //ler cada histograma da pasta usando uma funcao
+  //appenda na lista o struct com diretorio da localidade e histograma
+  //retorna a lista
+}
+
+
 
 int main(void) {
   
-  //MENU ABAIXO
   
+  //gerar lista com os histogramas medios
+
+  // compara query com cada no da lista
+
+  // retorna as cinco localidades mais provaveis
+
   
+
+  printf("fim do programa\n");
+
+  return 0;
+}
+
+
+//MENU ABAIXO
   
-  /*
+/*
   
   
   //menu de selecao do programa
@@ -136,17 +154,4 @@ int main(void) {
     }
   
   }
-
-
-  // lista de histogramas medios
-
-  // compara query com cada no da lista
-
-  // retorna as cinco localidades mais provaveis
-
-  */
-
-  printf("fim do programa\n");
-
-  return 0;
-}
+*/

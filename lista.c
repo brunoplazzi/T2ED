@@ -3,19 +3,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-typedef struct listaNode ListaNode;
 
-// estruturas
+typedef struct listaNode ListaNode;
+typedef struct histNode HistNode;
+
+
+//struct padrao do inicio da lista
 struct lista {
   ListaNode *first;
 };
 
+//struct de ponteiros de imagens
 struct listaNode {
   IMG *img;
   ListaNode *next;
 };
 
-// operacoes
+//struct de histogramas, com diretorio e histograma
+struct histNode{
+  char * local[81];
+  unsigned int hist[256];
+  HistNode *next;
+};
+
+
+// operacoes referentes a lista com ListaNode
 
 // criar uma lista vazia
 Lista *lista_create(void) {
@@ -120,5 +132,30 @@ void lista_histExtractor(Lista *l, char *salvarComo) {
 
   //liberar a memoria utilizada na geracao do histograma medio
   liberarMemoria(l);
+
+}
+
+//operacoes referentes a lista de histogramas medios
+
+void lista_histAppend(Lista *l, unsigned int* hist, char* localidade){
+
+  //alocacao do HistNode apontado inicialmente para NULL
+  HistNode *node = (HistNode*) malloc(sizeof(HistNode));
+  node->next = NULL;
+  
+  //preencher hist do histNode
+  for (int i = 0; i< 256; i++){
+    node->hist[i] = hist[i];
+  }
+
+  strcpy(node->local, localidade);
+
+  if(l->first == NULL){
+    l->first = node;
+  }
+  else{
+    node->next = l->first;
+    l->first = node;
+  }
 
 }
