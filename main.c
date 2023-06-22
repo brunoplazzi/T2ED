@@ -89,11 +89,85 @@ void recarregarHistogramas(){
 
 }
 
-Lista * listarHistogramasMedios(){
-  //criar uma lista de structs histogramicos
-  //ler cada histograma da pasta usando uma funcao
-  //appenda na lista o struct com diretorio da localidade e histograma
+//recebe uma localidade, le o histograma da pasta, preenche um histograma externo
+void leArquivoHist(char *localidade, unsigned int *hist) {
+
+  int i;
+
+  // preenche hist com valores nulos
+  for (i = 0; i < 256; i++) {
+    hist[i] = 0;
+  }
+
+  // prepara o diretorio para leitura do arquivo
+  char local[81];
+  strcpy(local, localidade);
+  char histogram[] = "histogram.txt";
+  strcat(local, histogram);
+  //printf("Local lido: %s\n", local);
+
+  // abrindo arquivo
+  FILE *in;
+  in = fopen(local, "rt");
+  if (in == NULL) {
+    printf("Erro na leitura do arquivo\n");
+  }
+
+  // copiando valores do arquivo para o hist
+  for (i = 0; i < 256; i++) {
+    fscanf(in, "%d\n", &hist[i]);
+  }
+
+  fclose(in);
+
+}
+
+
+
+//percorrer as pastas e retornar uma lista de histogramas medios
+ListaH * listarHistogramasMedios(){
+  
+  // vetor com as localidades do ifes
+  char *localidade[20] = {
+    "./base/img/bibliotecaEntrada/",
+    "./base/img/bloco5/",
+    "./base/img/bloco8Interno/",
+    "./base/img/blocoInexistente/",
+    "./base/img/caminhoLateral/",
+    "./base/img/cantina/",
+    "./base/img/corredorHallCantina/",
+    "./base/img/escada/",
+    "./base/img/estacionamento/",
+    "./base/img/hall/",
+    "./base/img/ifesEntrada/",
+    "./base/img/laboratorioPaixao/",
+    "./base/img/laboratorios700/",
+    "./base/img/laboratorios900/",
+    "./base/img/patioArvore/",
+    "./base/img/patioEnsinoMedio/",
+    "./base/img/patioProfessores/",
+    "./base/img/patioXadrez/",
+    "./base/img/quadra/",
+    "./base/img/salaDeAulaSuperior/",
+  };
+  
+  //cria lista vazia
+  ListaH * l = listaH_create();
+
+  //histograma auxiliar
+  unsigned int histograma[256];
+
+  //para cada localidade...
+  for (int i=0; i< 20; i++){
+    //ler o histograma da localidade e preencher o hist auxiliar
+    leArquivoHist(localidade[i], histograma);
+    
+    //appenda a lista
+    lista_histAppend(l, histograma, localidade[i]);
+  }
+
   //retorna a lista
+  return l;
 }
 
 
@@ -102,6 +176,14 @@ int main(void) {
   
   
   //gerar lista com os histogramas medios
+  ListaH* listaDeHists = listarHistogramasMedios();
+
+  
+
+  
+
+
+
 
   // compara query com cada no da lista
 

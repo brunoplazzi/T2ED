@@ -8,9 +8,13 @@ typedef struct listaNode ListaNode;
 typedef struct histNode HistNode;
 
 
-//struct padrao do inicio da lista
+//structs
 struct lista {
   ListaNode *first;
+};
+
+struct listaH{
+  HistNode* first;
 };
 
 //struct de ponteiros de imagens
@@ -21,7 +25,7 @@ struct listaNode {
 
 //struct de histogramas, com diretorio e histograma
 struct histNode{
-  char * local[81];
+  char * local;
   unsigned int hist[256];
   HistNode *next;
 };
@@ -136,8 +140,15 @@ void lista_histExtractor(Lista *l, char *salvarComo) {
 }
 
 //operacoes referentes a lista de histogramas medios
+ListaH* listaH_create(){
+  ListaH *p = (ListaH *)malloc(sizeof(ListaH));
+  p->first = NULL;
 
-void lista_histAppend(Lista *l, unsigned int* hist, char* localidade){
+  return p;
+}
+
+
+void lista_histAppend(ListaH *l, unsigned int* hist, char* localidade){
 
   //alocacao do HistNode apontado inicialmente para NULL
   HistNode *node = (HistNode*) malloc(sizeof(HistNode));
@@ -148,7 +159,11 @@ void lista_histAppend(Lista *l, unsigned int* hist, char* localidade){
     node->hist[i] = hist[i];
   }
 
-  strcpy(node->local, localidade);
+  //preencher o nome
+  char local[81];
+  strcpy(local, localidade);
+  node->local = local;
+
 
   if(l->first == NULL){
     l->first = node;
