@@ -171,39 +171,23 @@ ListaH * listarHistogramasMedios(){
   return l;
 }
 
+void lerHistQuery(unsigned int* hist){
 
+  char queryDict[81] = "./query/queryIMG.pgm";
+  
+  IMG *queryIMG = lerArquivo(queryDict);
 
-int main(void) {
-  
-  
-  
-  //essaa funcoes a seguir vão dentro da opção 2 (consultar localidade)
-  
-  //gerar lista com os histogramas medios
-  ListaH* listaDeHists = listarHistogramasMedios();
-  //nomeia as localidades
-  lista_nomear(listaDeHists);
-  //print de teste
-  lista_print(listaDeHists);
+  for(int i=0; i<256;i++){
+    hist[i] = queryIMG->hist[i];
+  }
 
-  
-  
-  
-  
-  // compara query com cada no da lista
-  // retorna as cinco localidades mais provaveis
-
-  
-
-  printf("fim do programa\n");
-
-  return 0;
 }
 
 
-//MENU ABAIXO
-  
-/*
+
+
+
+int main(void) {
   
   
   //menu de selecao do programa
@@ -236,8 +220,40 @@ int main(void) {
     }
     //opcao numero 2
     else if (escolha == 2){
-      printf("funcao que compara a localidade com a lista de histogramas medios");
+      
+      
+      //gerar lista com os histogramas medios
+      ListaH* listaDeHists = listarHistogramasMedios();
+      //nomeia as localidades
+      lista_nomear(listaDeHists);
+
+      //histograma da imagem pesquisada inicialmente zerado
+      unsigned int queryHist[256];
+
+      for(int i=0; i<256; i++){
+        queryHist[i] = 0;
+      }
+
+      //le imagem da query e escreve o seu histograma no hist recebido como parametro
+      lerHistQuery(queryHist);
+
+      //ATE AQUI TEM A LISTA DE HIST MEDIOS E O HISTOGRAMA QUERY**********************************************************************************
+
+      
+      
+      //funcao que compara a query com a lista de hist
+          //aqui q entra a pica no cu
+      
+      //funcao que escreve as imgs na pasta results
+          //pega as 5 localidades
+          //printa no console
+          //escreve na pasta results
     }
   
   }
-*/
+  
+
+  printf("fim do programa\n");
+
+  return 0;
+}
