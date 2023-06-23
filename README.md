@@ -12,8 +12,6 @@ Uma busca de imagens baseada no seu conteúdo(CBIR), que utiliza os conceitos de
 - [@joaomrpimentel](https://www.github.com/joaomrpimentel)
 
 
-
-
 ## Instalação
 
 Clone o repositório em seu Desktop:
@@ -29,26 +27,13 @@ Após isso, compile o código e execute:
     
 ## Estruturas de dados utilizadas
 Descrições das principais estruturas de dados utilizadas no programa
-- IMG
-Uma estrutura para armazenar a imagem PGM P2 na memória, onde:
-```c
-  char tipo[5];
-```
-Armazena o tipo de imagem, como é uma imagem PGM P2, a primeira linha indica que ela é P2
-```c
-  int largura, altura;
-```
-Armazena a largura e a altura da imagem como dois inteiros
-```c
-  int brilhoMax;
-```
-Por ser uma imagem preto e branco, armazenamos o brilho máximo que cada pixel pode ter.
-```c
-  unsigned char **mat;
-```
-Utilizamos unsigned char para armazenar os pixels da imagem em uma matriz
-```c
-unsigned int hist[256];
-```
-Utilizamos unsigned int para armazenar o histograma da imagem
-- lista
+- img <br />
+Uma estrutura para armazenar a imagem PGM na memória, com a identificação da imagem, largura, altura, brilho máximo de cada pixel(Por se tratar de uma imagem preto e branco), a matriz dos pixels da imagem e o histograma da imagem. Contendo também a função para leitura do arquivo da imagem e salvamento em uma matriz na memória e outra para liberar a memória alocada.
+- lista <br />
+Nessa estrutura temos a implementação de duas listas, uma lista para armazenar as imagens com ponteiros para a primeira e a próxima imagem e outra lista para armazenar os histogramas, tendo a localidade do histograma salvo, o próprio histograma e um ponteiro para a próxima imagem. Com funções para criar as listas, verificar seus tamanhos, liberar a memória alocada, verificar se está vazia, adicionar elementos, nomear locais e geração dos histogramas a partir das imagens já na memória.
+
+
+## Demonstração
+
+Um gif ou um link de alguma demonstração
+
