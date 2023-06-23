@@ -159,11 +159,10 @@ void lista_histAppend(ListaH *l, unsigned int* hist, char* localidade){
     node->hist[i] = hist[i];
   }
 
-  //preencher o nome
+  //preencher o nome PROVAVEL ERRO ESTA AQUI**************************************************
   char local[81];
   strcpy(local, localidade);
   node->local = local;
-
 
   if(l->first == NULL){
     l->first = node;
@@ -172,5 +171,55 @@ void lista_histAppend(ListaH *l, unsigned int* hist, char* localidade){
     node->next = l->first;
     l->first = node;
   }
+
+}
+
+//nomeia os locais na lista de histogramas medios
+void lista_nomear(ListaH *l){
+  
+  // vetor com as localidades do ifes
+  char *localidade[20] = {
+    "./base/img/bibliotecaEntrada/",
+    "./base/img/bloco5/",
+    "./base/img/bloco8Interno/",
+    "./base/img/blocoInexistente/",
+    "./base/img/caminhoLateral/",
+    "./base/img/cantina/",
+    "./base/img/corredorHallCantina/",
+    "./base/img/escada/",
+    "./base/img/estacionamento/",
+    "./base/img/hall/",
+    "./base/img/ifesEntrada/",
+    "./base/img/laboratorioPaixao/",
+    "./base/img/laboratorios700/",
+    "./base/img/laboratorios900/",
+    "./base/img/patioArvore/",
+    "./base/img/patioEnsinoMedio/",
+    "./base/img/patioProfessores/",
+    "./base/img/patioXadrez/",
+    "./base/img/quadra/",
+    "./base/img/salaDeAulaSuperior/",
+  };
+  
+  HistNode *p = l->first; 
+  for(int i = 19; i>=0; i--){
+    p->local = localidade[i];
+    p = p->next;
+  }
+}
+
+
+//print dos nomes dois locais e do primeiro elemento do hist PARA TESTE
+void lista_print(ListaH* l){
+  HistNode*p = l->first;
+
+  
+  while(p != NULL){
+    printf("%s -- ", p->local);
+    printf("%d\n", p->hist[0]);
+    p = p->next;
+  }
+
+
 
 }

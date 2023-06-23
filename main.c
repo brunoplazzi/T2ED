@@ -159,6 +159,7 @@ ListaH * listarHistogramasMedios(){
 
   //para cada localidade...
   for (int i=0; i< 20; i++){
+    
     //ler o histograma da localidade e preencher o hist auxiliar
     leArquivoHist(localidade[i], histograma);
     
@@ -175,18 +176,21 @@ ListaH * listarHistogramasMedios(){
 int main(void) {
   
   
+  
+  //essaa funcoes a seguir vão dentro da opção 2 (consultar localidade)
+  
   //gerar lista com os histogramas medios
   ListaH* listaDeHists = listarHistogramasMedios();
+  //nomeia as localidades
+  lista_nomear(listaDeHists);
+  //print de teste
+  lista_print(listaDeHists);
 
   
-
   
-
-
-
-
+  
+  
   // compara query com cada no da lista
-
   // retorna as cinco localidades mais provaveis
 
   
