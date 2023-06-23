@@ -60,3 +60,29 @@ void liberaMemoria(IMG *foto) {
   }
   free(foto->mat);
 }
+
+void salvarArquivo(IMG *foto, char *dict) {
+
+  int i, j;
+
+
+  // abre arquivo
+  FILE *out;
+  out = fopen(dict, "wt");
+
+  // escreve 3 linhas iniciais
+  fprintf(out, "%s\n", foto->tipo);
+  fprintf(out, "%d %d\n", foto->largura, foto->altura);
+  fprintf(out, "%d\n", foto->brilhoMax);
+
+  // escreve matriz
+  for (i = 0; i < foto->altura; i++) {
+    for (j = 0; j < foto->largura; j++) {
+      fprintf(out, "%d ", foto->mat[i][j]);
+    }
+    fprintf(out, "\n");
+  }
+
+  fclose(out);
+
+}

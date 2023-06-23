@@ -183,12 +183,77 @@ void lerHistQuery(unsigned int* hist){
 
 }
 
+void imprimeTop5(int *vetor){
+
+  // vetor com as localidades do ifes
+  char *localidade[20] = {
+    "bibliotecaEntrada",
+    "bloco5",
+    "bloco8Interno",
+    "blocoInexistente",
+    "caminhoLateral",
+    "cantina",
+    "corredorHallCantina",
+    "escada",
+    "estacionamento",
+    "hall",
+    "ifesEntrada",
+    "laboratorioPaixao",
+    "laboratorios700",
+    "laboratorios900",
+    "patioArvore",
+    "patioEnsinoMedio",
+    "patioProfessores",
+    "patioXadrez",
+    "quadra",
+    "salaDeAulaSuperior",
+  };
+
+  char base[] = "./base/img/";
+  char ext[] = "1.pgm";
+  char baseResult[] = "./results/";
+  
+  char dict[81];
+  char result[81];
+  
+  //ponteiro IMG auxiliar
+  IMG * imageTop5;
+  
+
+  //ler as imagens e apendar
+  for(int i = 0; i<5; i++){
+
+    //ajeita o dict pra leitura
+    strcpy(dict, base);
+    strcat(dict, localidade[vetor[i]]);
+    strcat(dict, "/");
+    strcat(dict, localidade[vetor[i]]);
+    strcat(dict, ext);
+
+    imageTop5 = lerArquivo(dict);
+
+    //ajeitando result para salvar imagem
+    strcpy(result, baseResult);
+    strcat(result, localidade[vetor[i]]);
+    strcat(result, ext);
+    
+    salvarArquivo(imageTop5, result);
+
+  }
+
+  for(int i=0; i<5;i++){
+    printf("%d %s\n",i+1, localidade[vetor[i]]);
+  }
+
+}
+
 
 
 
 
 int main(void) {
   
+  int i;
   
   //menu de selecao do programa
   int escolha = -1;
@@ -230,24 +295,59 @@ int main(void) {
       //histograma da imagem pesquisada inicialmente zerado
       unsigned int queryHist[256];
 
-      for(int i=0; i<256; i++){
+      for(i=0; i<256; i++){
         queryHist[i] = 0;
       }
 
       //le imagem da query e escreve o seu histograma no hist recebido como parametro
       lerHistQuery(queryHist);
 
-      //ATE AQUI TEM A LISTA DE HIST MEDIOS E O HISTOGRAMA QUERY**********************************************************************************
+
+      //vetor com as notas referentes a proximidade zerado
+      unsigned long int notasProximidade[20];
+
+      for (i = 19;i >= 0;i--){
+        notasProximidade[i] = 0;
+      }
+
+      //preenche vetor de notas
+      lista_defineNotas(listaDeHists, queryHist, notasProximidade);
 
       
+      //extracao dos indices dos 5 lugares mais proximos
+      unsigned long int menorNota;
+      int menorIndex;; 
       
-      //funcao que compara a query com a lista de hist
-          //aqui q entra a pica no cu
+      int indicesMenores[5] = {0,0,0,0,0};
       
-      //funcao que escreve as imgs na pasta results
-          //pega as 5 localidades
-          //printa no console
-          //escreve na pasta results
+      //por 5 vezes...
+      for(int j=0;j<5;j++){
+        
+        //menor igual ao primeiro elemento
+        menorNota = abs(notasProximidade[0]);
+        menorIndex = 0;
+        
+        for(i=0;i<20;i++){
+          if(notasProximidade[i] > 0){
+            if(notasProximidade[i] <= menorNota){
+              menorNota = notasProximidade[i];
+              menorIndex = i;
+            }
+          }
+        }
+        notasProximidade[menorIndex] = -1; //para ser ignorado na proxima iteracao
+        indicesMenores[j] = menorIndex;
+      }
+
+      // for(i=0; i<5; i++){
+      //  printf("%d, ", indicesMenores[i]);
+      // }
+      
+      //ATE AQUI O VETOR DE INDEX**********************************************************************************************
+
+      imprimeTop5(indicesMenores);
+
+
     }
   
   }

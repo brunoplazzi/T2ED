@@ -159,11 +159,13 @@ void lista_histAppend(ListaH *l, unsigned int* hist, char* localidade){
     node->hist[i] = hist[i];
   }
 
-  //preencher o nome PROVAVEL ERRO ESTA AQUI**************************************************
+  //preencheria o nome
   char local[81];
   strcpy(local, localidade);
   node->local = local;
 
+  
+  //adiciona na lista
   if(l->first == NULL){
     l->first = node;
   }
@@ -208,18 +210,26 @@ void lista_nomear(ListaH *l){
   }
 }
 
+//recebe lista de histogramas, histograma da query e vetor de notas. preenche o vetor de notas
+void lista_defineNotas(ListaH *l, unsigned int *hist, unsigned long int*vetor){
 
-//print dos nomes dois locais e do primeiro elemento do hist PARA TESTE
-void lista_print(ListaH* l){
-  HistNode*p = l->first;
+  HistNode* p = l->first;
+  unsigned long int notaAtual;
+  int j = 19;
 
-  
   while(p != NULL){
-    printf("%s -- ", p->local);
-    printf("%d\n", p->hist[0]);
+    
+    notaAtual = 0;
+
+    for(int i=0; i<256; i++){
+      notaAtual += abs(p->hist[i] - hist[i]);
+    }
+
+
+    vetor[j] = notaAtual;
+    vetor--;
+    
     p = p->next;
   }
-
-
 
 }

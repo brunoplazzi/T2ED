@@ -16,8 +16,6 @@ void lista_histExtractor(Lista *l, char *salvarComo);
 ListaH* listaH_create();
 void lista_histAppend(ListaH *l, unsigned int* hist, char* localidade);
 void lista_nomear(ListaH *l);
-
-
-void lista_print(ListaH* l);
+void lista_defineNotas(ListaH *l, unsigned int *hist, unsigned long int*vetor);
 
 #endif

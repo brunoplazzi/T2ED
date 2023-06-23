@@ -16,4 +16,6 @@ IMG *lerArquivo(char *dict);
 
 void liberaMemoria(IMG *foto);
 
+void salvarArquivo(IMG *foto, char *dict);
+
 #endif
