@@ -1,7 +1,7 @@
 
 # Trabalho 2 -  Estrutura de Dados
 
-O objetivo deste trabalho é criar um programa que, através de uma imagem fornecida pelo usuário, consiga reconhecer e dizer para o usuário que localidade é aquela. Utilizam-se conceitos de busca de imagens baseada no seu conteúdo(CBIR), TADs e listas encadeadas aprendidos em sala de aula.
+Este projeto consiste em um sistema de processamento de imagens desenvolvido como um trabalho acadêmico, da disciplina de estrutura de dados do IFES-Serra. O objetivo do projeto é aplicar os conhecimentos adquiridos em sala de aula, realizando processamento de imagens, busca de imagens baseada no seu conteúdo(CBIR), leitura de arquivos, cálculo de histogramas, geração de histograma médio e comparação de histogramas, para o reconhecimento de imagens e identificação de localidades dentro do campus do IFES-Serra. O trabalho consiste em criar um programa que, através de uma imagem fornecida pelo usuário, consiga reconhecer e dizer para o usuário que localidade é aquela.
 
 ### Autores
 
@@ -14,7 +14,7 @@ O objetivo deste trabalho é criar um programa que, através de uma imagem forne
 
 ## Informações Importantes
 
-- Para o funcionamento correto do programa é necessário baixar a base de dados com as imagens utilizadas pelo programa. O arquivo pode ser baixado no link do google drive abaixo. Substitua a pasta 'base' (que esta vazia neste repositório) pela pasta baixada no link do google drive.
+- Para o funcionamento correto do programa é necessário baixar a base de dados com as imagens utilizadas pelo programa. O arquivo pode ser baixado no link do google drive abaixo. Substitua a pasta 'base' (que esta vazia neste repositório) pela pasta de mesmo nome disponível no link para download:
 
 
 [DOWNLOAD - Base de imagens - T2ED](https://drive.google.com/drive/folders/1myZVmIY_j-1Bj4vEWI_FqXvHB66KLOVG)
@@ -96,15 +96,52 @@ __[2] Consulta de imagem__: Esta é a parte _online_ do programa. Aqui será rea
 
 <hr >
 
-
-
-
-
 ## Estruturas de dados utilizadas
-Descrições das principais estruturas de dados utilizadas no programa
-- img <br />
-Uma estrutura para armazenar a imagem PGM na memória, com a identificação da imagem, largura, altura, brilho máximo de cada pixel(Por se tratar de uma imagem preto e branco), a matriz dos pixels da imagem e o histograma da imagem. Contendo também a função para leitura do arquivo da imagem e salvamento em uma matriz na memória e outra para liberar a memória alocada.
-- lista <br />
-Nessa estrutura temos a implementação de duas listas, uma lista para armazenar as imagens com ponteiros para a primeira e a próxima imagem e outra lista para armazenar os histogramas, tendo a localidade do histograma salvo, o próprio histograma e um ponteiro para a próxima imagem. Com funções para criar as listas, verificar seus tamanhos, liberar a memória alocada, verificar se está vazia, adicionar elementos, nomear locais e geração dos histogramas a partir das imagens já na memória.
+
+Descrições das principais estruturas de dados utilizadas no programa. Utilizamos em nosso trabalho o conceito de listas encadeadas para manipulação das imagens e dos dados extraidos dela. Utilizamos também dois tipos abstratos de dados (TADs): O tipo img e o tipo lista, que descreveremos a seguir.
+
+### __IMG:__
+
+O TAD img lida com o struct IMG, que é a estrutura que lida com as informações das imagens .pgm utilizadas no programa. O struct IMG possui todas informações do arquivo da imagem e um vetor que armazena o histograma da imagem. O TAD lida principalmente com a leitura e escrita das imagens. 
+
+```
+typedef struct {
+  char tipo[5];
+  int largura, altura;
+  int brilhoMax;
+  unsigned char **mat;
+  unsigned int hist[256];
+} IMG;
+```
+
+### __Lista:__
+
+O TAD lista é o responsável pelas operações envolvendo listas encadeadas. Ele engloba dois tipos dinstintos de lista, cada uma com uma finalidade e um node próprio. A _Lista_ é composta pelo _ListaNode_, struct que guarda um ponteiro para um IMG. Ela é utilizada na parte _offline_, durante o processo de extração dos histogramas médios.
+
+```
+//Node utilizado pela Lista
+
+struct listaNode {
+  IMG *img;
+  ListaNode *next;
+};
+
+```
+Já o outro tipo de lista, o _ListaH_, utiliza o _HistNode_. Esse tipo de node armazena o diretório e o histograma médio de um local. Esse tipo de lista é utilizado na parte _online_ do programa, para listar todos os histogramas médios que serão comparados com o histograma da imagem na query.
+
+```
+//Node utilizado pela ListaH
+
+struct histNode{
+  char * local;
+  unsigned int hist[256];
+  HistNode *next;
+};
+```
 
 
+<hr >
+
+## Considerações finais
+
+Esse trabalho foi muito desafiador, desde o início. Após muita conversa entre os membros do grupo e muitas conjecturas, conseguimos implementar uma solução satisfatória para o problema proposto. Conseguimos, também, aplicar os conhecimentos adquiridos em sala de aula cumprindo com o propósito real do trabalho que é o de consolidar nosso conhecimento sobre as estruturas de dados, como e quando utiliza-las e saber que sua utilização pode auxiliar muito na resolução dos problemas. O maior desafio (assim como no primeiro trabalho), sem dúvidas, foi a utilização da linguagem de programação C. Entretanto. mesmo com as dificuldades, conseguimos perceber nitidamente nossa evolução na programação com esta linguagem e como o domínio de seus conceitos é fundamental para entender estruturas de dados.
