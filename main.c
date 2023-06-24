@@ -278,82 +278,91 @@ int main(void) {
       scanf("%d", &confirma);
 
       if(confirma == 1){
-        printf("executa a recarga dos histogramas\n");
-        //recarregarHistogramas();
+        printf("Recarga dos histogramas iniciada!\n");
+        recarregarHistogramas();
       }
       
     }
     //opcao numero 2
     else if (escolha == 2){
       
-      
-      //gerar lista com os histogramas medios
-      ListaH* listaDeHists = listarHistogramasMedios();
-      //nomeia as localidades
-      lista_nomear(listaDeHists);
+      int confirm = -1;
 
-      //histograma da imagem pesquisada inicialmente zerado
-      unsigned int queryHist[256];
+      printf("Certifique-se de que a pasta [query] possui uma imagem com nome [queryIMG.pgm] e que a pasta [results] esta vazia\n");
+      printf("Deseja prosseguir com a consulta de imagem?\n");
+      printf("[1] Prosseguir\n");
+      printf("[0] Voltar\n");
 
-      for(i=0; i<256; i++){
-        queryHist[i] = 0;
-      }
+      scanf("%d", &confirm);
 
-      //le imagem da query e escreve o seu histograma no hist recebido como parametro
-      lerHistQuery(queryHist);
-
-
-      //vetor com as notas referentes a proximidade zerado
-      unsigned long int notasProximidade[20];
-
-      for (i = 19;i >= 0;i--){
-        notasProximidade[i] = 0;
-      }
-
-      //preenche vetor de notas
-      lista_defineNotas(listaDeHists, queryHist, notasProximidade);
-
-      
-      //extracao dos indices dos 5 lugares mais proximos
-      unsigned long int menorNota;
-      int menorIndex;; 
-      
-      int indicesMenores[5] = {0,0,0,0,0};
-      
-      //por 5 vezes...
-      for(int j=0;j<5;j++){
+      if(confirm == 1){
+        printf("Consulta de imagem iniciada!\n");
         
-        //menor igual ao primeiro elemento
-        menorNota = abs(notasProximidade[0]);
-        menorIndex = 0;
+          //gerar lista com os histogramas medios
+        ListaH* listaDeHists = listarHistogramasMedios();
+        //nomeia as localidades
+        lista_nomear(listaDeHists);
+
+        //histograma da imagem pesquisada inicialmente zerado
+        unsigned int queryHist[256];
+
+        for(i=0; i<256; i++){
+          queryHist[i] = 0;
+        }
+
+        //le imagem da query e escreve o seu histograma no hist recebido como parametro
+        lerHistQuery(queryHist);
+
+
+        //vetor com as notas referentes a proximidade zerado
+        unsigned long int notasProximidade[20];
+
+        for (i = 19;i >= 0;i--){
+          notasProximidade[i] = 0;
+        }
+
+        //preenche vetor de notas
+        lista_defineNotas(listaDeHists, queryHist, notasProximidade);
+
         
-        for(i=0;i<20;i++){
-          if(notasProximidade[i] > 0){
-            if(notasProximidade[i] <= menorNota){
-              menorNota = notasProximidade[i];
-              menorIndex = i;
+        //extracao dos indices dos 5 lugares mais proximos
+        unsigned long int menorNota;
+        int menorIndex;; 
+        
+        int indicesMenores[5] = {0,0,0,0,0};
+        
+        //por 5 vezes...
+        for(int j=0;j<5;j++){
+          
+          //menor igual ao primeiro elemento
+          menorNota = abs(notasProximidade[0]);
+          menorIndex = 0;
+          
+          for(i=0;i<20;i++){
+            if(notasProximidade[i] > 0){
+              if(notasProximidade[i] <= menorNota){
+                menorNota = notasProximidade[i];
+                menorIndex = i;
+              }
             }
           }
+          notasProximidade[menorIndex] = -1; //para ser ignorado na proxima iteracao
+          indicesMenores[j] = menorIndex;
         }
-        notasProximidade[menorIndex] = -1; //para ser ignorado na proxima iteracao
-        indicesMenores[j] = menorIndex;
+
+        imprimeTop5(indicesMenores);
+
+        printf("\n");
+        printf("Fim do programa\n");
+        return 0;
+
       }
-
-      // for(i=0; i<5; i++){
-      //  printf("%d, ", indicesMenores[i]);
-      // }
-      
-      //ATE AQUI O VETOR DE INDEX**********************************************************************************************
-
-      imprimeTop5(indicesMenores);
-
 
     }
   
   }
   
-
-  printf("fim do programa\n");
+  printf("Fim do programa\n");
 
   return 0;
 }

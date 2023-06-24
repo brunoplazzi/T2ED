@@ -1,15 +1,31 @@
 
-# Trabalho 2 Estrutura de Dados
+# Trabalho 2 -  Estrutura de Dados
 
-Uma busca de imagens baseada no seu conteúdo(CBIR), que utiliza os conceitos de TADs e listas encadeadas aprendidos em sala.
+O objetivo deste trabalho é criar um programa que, através de uma imagem fornecida pelo usuário, consiga reconhecer e dizer para o usuário que localidade é aquela. Utilizam-se conceitos de busca de imagens baseada no seu conteúdo(CBIR), TADs e listas encadeadas aprendidos em sala de aula.
+
+### Autores
+
+- Bruno Schneider Plazzi: [@brunoplazzi](https://www.github.com/brunoplazzi)
+- Natan Lagassa [@natanloc](https://www.github.com/natanloc)
+- Filipe Moura Anunciação: [@filipeabmoura](https://www.github.com/filipeabmoura)
+- João Marcos Pimentel: [@joaomrpimentel](https://www.github.com/joaomrpimentel)
 
 
-## Autores
+## Informações Importantes
 
-- [@brunoplazzi](https://www.github.com/brunoplazzi)
-- [@natanloc](https://www.github.com/natanloc)
-- [@filipeabmoura](https://www.github.com/filipeabmoura)
-- [@joaomrpimentel](https://www.github.com/joaomrpimentel)
+- Para o funcionamento correto do programa é necessário baixar a base de dados com as imagens utilizadas pelo programa. O arquivo pode ser baixado no link do google drive abaixo. Substitua a pasta 'base' (que esta vazia neste repositório) pela pasta baixada no link do google drive.
+
+
+[DOWNLOAD - Base de imagens - T2ED](https://www.google.com)
+
+
+- Para o funcionamento correto do programa, o executável criado após a compilação dos arquivos deve estar no mesmo diretório dos arquivos '.c'.
+
+- Este programa utliliza, como base, imagens no formato '.pgm'. Todas imagens devem estar nesse formato para o correto funcionamento do programa.
+
+- Para realizar uma consulta de imagens, é imprescindível que o nome da imagem colocada na pasta 'query' esteja com o nome "queryIMG.pgm". Utilize apenas uma imagem por vez para consulta.
+
+- A base de dados já esta pré carregada com os histogramas médios, para que o programa possa ser utilizado imadiatamente para buscas de imagens. Entretanto, o usuário pode recarregar a base durante o uso  do programa (ver detalhes mais adiante em "Utilização do programa"). 
 
 
 ## Instalação
@@ -25,6 +41,31 @@ Após isso, compile o código e execute:
   ./T2ED
 ```
     
+## Utilização do programa
+
+Ao executar o programa, o usuário entra no menu principal e deverá selecionar uma das 3 opções oferecidas, digitando o seu número correspondente:
+
+```
+Digite o numero do que deseja fazer:
+[1] Recarregar histogramas
+[2] Consultar localidade
+[0] SAIR
+```
+__[1] Recarregar histogramas__: Esta opção irá realizar a leitura da base de imagens, localidade por localidade, e vai gerar o histograma médio de cada uma delas. O histograma será salvo na pasta de cada localidade, com o nome de 'histogram.txt'. Como a leitura e geração dos histogramas medios é um processo relativamente demorado (cerca de 10 a 15 minutos em nossos testes) ao selecionar essa opção o programa solicitará q o usuário confirme sua escolha. Case escolha seguir, o programa realizará a recarga dos histogramas. Caso contrário, o programa retorna ao menu principal.
+
+__[1] Consultar localidade__: Essa opção vai realizar a consulta da localidade baseada na imagem que se encontra na pasta 'query'. Como é necessário que tenha uma imagem na pasta 'query' para o funcionamento correto do programa, o programa vai pedir a confirmação do usuário pra prosseguir com a consulta. Caso ele prossiga, o programa processará a imagem da pasta 'query', vai selecionar as 5 localidades mais prováveis e escreverá na pasta 'results'. Além disso, os nomes das 5 localidades serão exibidos no console após o processo e o programa finalizará sua execução. Caso opte por não prosseguir com a consulta, o programa retorna ao menu principal.
+
+__[1] SAIR__: O programa encerra sua execução e uma mensagem "Fim do programa" é exibida.
+
+
+## Funcionamento do programa
+
+O Programa se divide em duas grandes tarefas: Extrair os histogramas médios(1) e realizar consulta de imagem(2).
+
+__[1] Extração dos histogramas médios__: Esta é a parte _offline_ do programa
+
+__[2] Consulta de imagem__:
+
 ## Estruturas de dados utilizadas
 Descrições das principais estruturas de dados utilizadas no programa
 - img <br />
