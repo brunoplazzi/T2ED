@@ -7,7 +7,7 @@ Este projeto consiste em um sistema de processamento de imagens desenvolvido com
 
 - Bruno Schneider Plazzi: [@brunoplazzi](https://www.github.com/brunoplazzi)
 - Natan Lagassa [@natanloc](https://www.github.com/natanloc)
-- Filipe Moura Anunciação: [@filipeabmoura](https://www.github.com/filipeabmoura)
+- Filipe Anunciação Batista de Moura: [@filipeabmoura](https://www.github.com/filipeabmoura)
 - João Marcos Pimentel: [@joaomrpimentel](https://www.github.com/joaomrpimentel)
 
 <hr >
