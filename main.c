@@ -30,15 +30,23 @@ void leitorPastas(char *pasta, FileCallback callback, Lista *l, char *localidade
 //le o nome do diretorio da imagem, extrai seu struct IMG, adiciona a lista de imagens da localidade
 void preencheLista(const char *name, Lista *l, char *local) {
   if (*name != '.') {
-    char dict[81];
-    dict[0] = '\0';
+    
+    char teste[] = "histogram.txt";
+    
+    if(strcmp(teste, name) != 0){
+      char dict[81];
+      dict[0] = '\0';
 
-    strcat(dict, local);
-    strcat(dict, name);
+      strcat(dict, local);
+      strcat(dict, name);
 
-    IMG *img = lerArquivo(dict);
-    lista_append(l, img);
+
+      IMG *img = lerArquivo(dict);
+      lista_append(l, img);
+    }
+    
   }
+    
 }
 
 //gera o histograma medio da localidade
@@ -171,6 +179,7 @@ ListaH * listarHistogramasMedios(){
   return l;
 }
 
+//extrai histograma da imagem do query
 void lerHistQuery(unsigned int* hist){
 
   char queryDict[81] = "./query/queryIMG.pgm";
@@ -183,6 +192,7 @@ void lerHistQuery(unsigned int* hist){
 
 }
 
+//recebe veror dos indices das 5 provaveis localidades e salva as fotos na pasta results
 void imprimeTop5(int *vetor){
 
   // vetor com as localidades do ifes
