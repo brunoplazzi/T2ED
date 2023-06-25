@@ -17,7 +17,11 @@ Este projeto consiste em um sistema de processamento de imagens desenvolvido com
 - Para o funcionamento correto do programa é necessário baixar a base de dados com as imagens utilizadas pelo programa. O arquivo pode ser baixado no link do google drive abaixo. Substitua a pasta 'base' (que esta vazia neste repositório) pela pasta de mesmo nome disponível no link para download:
 
 
-[DOWNLOAD - Base de imagens - T2ED](https://drive.google.com/drive/folders/1myZVmIY_j-1Bj4vEWI_FqXvHB66KLOVG)
+__OPÇÕES DE DOWNLOAD:__
+
+[DOWNLOAD - Google drive](https://drive.google.com/drive/folders/1PHTY2H2_4XDObof4fBD2sLFMx3rWw0DL)
+
+[DOWNLOAD - One Drive](https://onedrive.live.com/?authkey=%21AHe7FZy5Hgj%2DMYI&id=282BF1E6E83933EC%2125430&cid=282BF1E6E83933EC)
 
 
 - Para o funcionamento correto do programa, o executável criado após a compilação dos arquivos deve estar no mesmo diretório dos arquivos '.c'.
