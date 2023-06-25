@@ -26,7 +26,11 @@ Este projeto consiste em um sistema de processamento de imagens desenvolvido com
 
 - Para realizar uma consulta de imagens, é imprescindível que o nome da imagem colocada na pasta 'query' esteja com o nome "queryIMG.pgm". Utilize apenas uma imagem por vez para consulta.
 
-- A base de dados já esta pré carregada com os histogramas médios, para que o programa possa ser utilizado imadiatamente para buscas de imagens. Entretanto, o usuário pode recarregar a base durante o uso  do programa (ver detalhes mais adiante em "Utilização do programa"). 
+- A base de dados já esta pré carregada com os histogramas médios, para que o programa possa ser utilizado imadiatamente para buscas de imagens. Entretanto, o usuário pode recarregar a base durante o uso  do programa (ver detalhes mais adiante em "Utilização do programa").
+
+- A estrutura de pastas deve ficar semelhante as imagens abaixo. Na pasta do projeto (T2ED) terão todos arquivos .c e .h, o arquivo README.md, o executável main.exe e 3 pastas: _base_, _query_ e _results_. A pasta _base_ será a pasta baixada no google drive com todas imagens e é estruturada como visto na imagem. caso as pastas _query_ e _results_ não existam, crie as pastas com estes exatos nomes e adicione na pasta do projeto.
+
+- É de suma importância que a estrutura de diretórios seja seguida para o correto funcionamento do programa.
 
 
 ![estrutura de pastas](https://github.com/brunoplazzi/T2ED/assets/72825142/d8de2169-b320-4108-981c-3ad2ac8db82e)
@@ -37,17 +41,19 @@ Este projeto consiste em um sistema de processamento de imagens desenvolvido com
 ## Instalação
 
 
-
-Clone o repositório em seu Desktop:
+- Clone o repositório em seu Desktop:
 
 ```bash
   git clone https://github.com/brunoplazzi/T2ED.git
 ```
-Após isso, compile o código e execute:
+- Após isso, compile o código e execute:
 ```bash
   gcc -o T2ED main.c img.c lista.c
   ./T2ED
 ```
+
+- Ou baixe o zip com a pasta do projeto, extraia os arquivos, compile e execute. Não esqueça de incluir a base de imagens e demais pastas necessárias.
+
 <hr >
 
 ## Utilização do programa
