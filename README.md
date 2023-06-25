@@ -28,9 +28,15 @@ Este projeto consiste em um sistema de processamento de imagens desenvolvido com
 
 - A base de dados já esta pré carregada com os histogramas médios, para que o programa possa ser utilizado imadiatamente para buscas de imagens. Entretanto, o usuário pode recarregar a base durante o uso  do programa (ver detalhes mais adiante em "Utilização do programa"). 
 
+
+![estrutura de pastas](https://github.com/brunoplazzi/T2ED/assets/72825142/d8de2169-b320-4108-981c-3ad2ac8db82e)
+![estrutura de pastas2](https://github.com/brunoplazzi/T2ED/assets/72825142/1b65a8d7-49b0-4977-8127-28197acaad90)
+
 <hr >
 
 ## Instalação
+
+
 
 Clone o repositório em seu Desktop:
 
