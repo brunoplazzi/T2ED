@@ -19,9 +19,17 @@ Este projeto consiste em um sistema de processamento de imagens desenvolvido com
 
 __OPÇÕES DE DOWNLOAD:__
 
-[DOWNLOAD - Google drive](https://drive.google.com/drive/folders/1PHTY2H2_4XDObof4fBD2sLFMx3rWw0DL)
+__BASE REDUZIDA:__ (Solicitada pelo professor)
 
-[DOWNLOAD - One Drive](https://onedrive.live.com/?authkey=%21AHe7FZy5Hgj%2DMYI&id=282BF1E6E83933EC%2125430&cid=282BF1E6E83933EC)
+[DOWNLOAD OPÇÃO 1 - Google drive](https://drive.google.com/drive/folders/1TjgOSTrStLcb4PKyvdWUSfk_D7FQ57l3?usp=drive_link)
+
+[DOWNLOAD OPÇÃO 2 - One Drive](https://1drv.ms/f/s!AuwzOejm8Ssogckk4yITjfKDz6HgkA?e=A9x08k)
+
+__Base original:__
+
+[DOWNLOAD OPÇÃO 1 - Google drive](https://drive.google.com/drive/folders/1PHTY2H2_4XDObof4fBD2sLFMx3rWw0DL)
+
+[DOWNLOAD OPÇÃO 2 - One Drive](https://onedrive.live.com/?authkey=%21AHe7FZy5Hgj%2DMYI&id=282BF1E6E83933EC%2125430&cid=282BF1E6E83933EC)
 
 
 - Para o funcionamento correto do programa, o executável criado após a compilação dos arquivos deve estar no mesmo diretório dos arquivos '.c'.
